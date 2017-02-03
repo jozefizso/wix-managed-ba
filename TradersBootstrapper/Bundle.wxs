@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi"
+     xmlns:bal="http://schemas.microsoft.com/wix/BalExtension"
+     >
+  <Bundle Name="Traders App"
+          Version="1.0.0.0"
+          Manufacturer="Northwind Traders"
+          Copyright="Copyright © 2017 Jozef Izso"
+          UpgradeCode="686e1a4a-9c6d-43c7-bf3e-56d056a246b7"
+          IconSourceFile="$(var.TradersApp.ProjectDir)\nwicon.ico"
+          >
+    <BootstrapperApplicationRef Id="WixStandardBootstrapperApplication.HyperlinkLargeLicense">
+      <bal:WixStandardBootstrapperApplication
+        LicenseUrl=""
+        ThemeFile="HyperlinkTheme.xml"
+        LocalizationFile="HyperlinkTheme.wxl"
+        LogoFile="nwicon.png"
+        SuppressOptionsUI="yes"
+        LaunchTarget="[ProgramFilesFolder]\Northwind Traders\Traders App\$(var.TradersApp.TargetFileName)"
+        />
+    </BootstrapperApplicationRef>
+
+    <Chain>
+      <MsiPackage SourceFile="$(var.TradersSetup.TargetDir)\TradersAppSetup.msi" />
+    </Chain>
+  </Bundle>
+</Wix>
