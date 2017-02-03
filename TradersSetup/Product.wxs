@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+  <Product Id="*"
+           UpgradeCode="e857b46d-3034-4a81-b581-9d035396346d"
+           Name="Traders App"
+           Manufacturer="Northwind Traders"
+           Version="1.0.0.0"
+           Language="1033"
+           >
+    <Package InstallerVersion="200" Compressed="yes" InstallScope="perMachine" />
+
+    <Icon Id="ProductIcon.ico" SourceFile="$(var.TradersApp.ProjectDir)\nwicon.ico" />
+    <Property Id="ARPPRODUCTICON" Value="ProductIcon.ico" />
+
+    <MajorUpgrade DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
+    <MediaTemplate EmbedCab="yes" />
+
+    <Feature Id="ProductFeature" Title="Traders App" Level="1">
+      <ComponentGroupRef Id="ProductComponents" />
+    </Feature>
+  </Product>
+
+  <Fragment>
+    <Directory Id="TARGETDIR" Name="SourceDir">
+      <Directory Id="ProgramFilesFolder">
+        <Directory Id="ManufacturerFolder" Name="!(bind.property.Manufacturer)">
+          <Directory Id="INSTALLFOLDER" Name="!(bind.property.ProductName)" />
+        </Directory>
+      </Directory>
+    </Directory>
+  </Fragment>
+
+  <Fragment>
+    <ComponentGroup Id="ProductComponents" Directory="INSTALLFOLDER">
+       <Component Id="TradersAppExe">
+         <File Source="$(var.TradersApp.TargetDir)\TradersApp.exe" KeyPath="yes" />
+       </Component>
+       <Component Id="TradersAppConfig">
+         <File Source="$(var.TradersApp.TargetDir)\TradersApp.exe.config" KeyPath="yes" />
+       </Component>
+    </ComponentGroup>
+  </Fragment>
+</Wix>
