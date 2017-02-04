@@ -8,12 +8,12 @@
         Title="Northwind Traders"
         MinHeight="230"
         MinWidth="320"
-        Height="300"
-        Width="400"
+        Height="285"
+        Width="493"
         Icon="nwicon.ico">
     <Grid>
         <Image x:Name="nwlogo_jpg" Source="nwlogo.jpg" Stretch="None" />
         <Button x:Name="btnExit" Content="Exit" HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="75" Margin="0,0,10,10.5" Click="btnExit_Click"/>
-
+        <Label x:Name="lblVersion" Content="v1.0.0" Margin="10,0,90,7.5" VerticalAlignment="Bottom"/>
     </Grid>
 </Window>
