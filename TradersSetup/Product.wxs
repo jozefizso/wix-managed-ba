@@ -27,17 +27,36 @@
           <Directory Id="INSTALLFOLDER" Name="!(bind.property.ProductName)" />
         </Directory>
       </Directory>
+      <Directory Id="ProgramMenuFolder">
+        <Directory Id="AppProgramMenuFolder" Name="!(bind.property.Manufacturer)">
+          <Component Id="AppProgramMenuFolderComponent">
+            <RemoveFolder Id="AppProgramMenuFolder" On="uninstall" />
+            <RegistryValue Root="HKMU" Key="Software\[Manufacturer]\[ProductName]" Type="string" Value="" KeyPath="yes" />
+          </Component>
+        </Directory>
+      </Directory>
     </Directory>
   </Fragment>
 
   <Fragment>
     <ComponentGroup Id="ProductComponents" Directory="INSTALLFOLDER">
        <Component Id="TradersAppExe">
-         <File Source="$(var.TradersApp.TargetDir)\TradersApp.exe" KeyPath="yes" />
+         <File Source="$(var.TradersApp.TargetDir)\TradersApp.exe" KeyPath="yes">
+           <Shortcut Id="DesktopShortcut"
+                     Directory="AppProgramMenuFolder"
+                     Name="Northwind Traders"
+                     Advertise="yes"
+                     Icon="ProductIcon.ico"
+                     IconIndex="0"
+                     Show="normal"
+                     WorkingDirectory="APPDIR"
+                     />
+         </File>
        </Component>
        <Component Id="TradersAppConfig">
          <File Source="$(var.TradersApp.TargetDir)\TradersApp.exe.config" KeyPath="yes" />
        </Component>
+      <ComponentRef Id="AppProgramMenuFolderComponent" />
     </ComponentGroup>
   </Fragment>
 </Wix>
