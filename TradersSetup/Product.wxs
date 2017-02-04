@@ -4,7 +4,7 @@
            UpgradeCode="e857b46d-3034-4a81-b581-9d035396346d"
            Name="Traders App"
            Manufacturer="Northwind Traders"
-           Version="1.0.0.0"
+           Version="!(bind.FileVersion.TradersAppExe)"
            Language="1033"
            >
     <Package InstallerVersion="200" Compressed="yes" InstallScope="perMachine" />
@@ -41,8 +41,8 @@
 
   <Fragment>
     <ComponentGroup Id="ProductComponents" Directory="INSTALLFOLDER">
-       <Component Id="TradersAppExe">
-         <File Source="$(var.TradersApp.TargetDir)\TradersApp.exe" KeyPath="yes">
+       <Component Id="TradersAppExeComponent">
+         <File Id="TradersAppExe" Source="$(var.TradersApp.TargetDir)\TradersApp.exe" KeyPath="yes">
            <Shortcut Id="DesktopShortcut"
                      Directory="AppProgramMenuFolder"
                      Name="Northwind Traders"
@@ -54,7 +54,7 @@
                      />
          </File>
        </Component>
-       <Component Id="TradersAppConfig">
+       <Component Id="TradersAppConfigComponent">
          <File Source="$(var.TradersApp.TargetDir)\TradersApp.exe.config" KeyPath="yes" />
        </Component>
       <ComponentRef Id="AppProgramMenuFolderComponent" />
