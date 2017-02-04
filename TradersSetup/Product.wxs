@@ -11,6 +11,7 @@
 
     <Icon Id="ProductIcon.ico" SourceFile="$(var.TradersApp.ProjectDir)\nwicon.ico" />
     <Property Id="ARPPRODUCTICON" Value="ProductIcon.ico" />
+    <SetProperty Id="ARPINSTALLLOCATION" Value="[INSTALLFOLDER]" After="CostFinalize" />
 
     <MajorUpgrade DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
     <MediaTemplate EmbedCab="yes" />
