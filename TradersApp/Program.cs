@@ -14,8 +14,11 @@ namespace TradersApp
         {
             int hr = RestartManager.RegisterApplicationRestart(RestartManager.RestartCommandLineParameter, RestartFlags.RESTART_NO_CRASH | RestartFlags.RESTART_NO_HANG);
 
+            bool isRestarted = args.Length > 0 && args[0] == "--restarted";
+
             App app = new App();
             var window = new MainWindow();
+            window.IsRestarted = isRestarted;
             app.Run(window);
         }
     }

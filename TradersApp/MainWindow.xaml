@@ -25,5 +25,6 @@
         <Label x:Name="lblVersion" Content="v1.0.0" Margin="10,0,90,7.5" VerticalAlignment="Bottom" Grid.Row="1" Height="26" Grid.ColumnSpan="2"/>
         <Label Content="Process ID:" Margin="10,0,5,0" Grid.Row="1" VerticalAlignment="Top"/>
         <Label x:Name="lblPID" Content="0" Grid.Column="1" Grid.Row="1" VerticalAlignment="Top" Margin="0,0,10,0"/>
+        <Label x:Name="lblRestartMessage" Content="" Margin="10,26,10,0" Grid.Row="1" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
     </Grid>
 </Window>

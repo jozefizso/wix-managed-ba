@@ -29,6 +29,8 @@ namespace TradersApp
             this.Loaded += MainWindow_Loaded;
         }
 
+        public bool IsRestarted { get; set; }
+
         private void MainWindow_Loaded(object sender, RoutedEventArgs e)
         {
             var assembly = Assembly.GetExecutingAssembly();
@@ -36,6 +38,11 @@ namespace TradersApp
             lblVersion.Content = "v" + name.Version.ToString(3);
 
             lblPID.Content = Process.GetCurrentProcess().Id;
+
+            if (this.IsRestarted)
+            {
+                this.lblRestartMessage.Content = "Restarted by Restart Manager.";
+            }
         }
 
         private void btnExit_Click(object sender, RoutedEventArgs e)
