@@ -17,6 +17,7 @@
         LogoFile="nwicon.png"
         SuppressOptionsUI="yes"
         LaunchTarget="[ProgramFilesFolder]\Northwind Traders\Traders App\$(var.TradersApp.TargetFileName)"
+        ShowFilesInUse="yes"
         />
     </BootstrapperApplicationRef>
 
