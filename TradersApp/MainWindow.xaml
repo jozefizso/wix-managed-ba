@@ -12,8 +12,18 @@
         Width="493"
         Icon="nwicon.ico">
     <Grid>
-        <Image x:Name="nwlogo_jpg" Source="nwlogo.jpg" Stretch="None" />
-        <Button x:Name="btnExit" Content="Exit" HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="75" Margin="0,0,10,10.5" Click="btnExit_Click"/>
-        <Label x:Name="lblVersion" Content="v1.0.0" Margin="10,0,90,7.5" VerticalAlignment="Bottom"/>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="90"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Image x:Name="nwlogo_jpg" Source="nwlogo.jpg" Stretch="None" HorizontalAlignment="Left" Margin="4,4,-173,-55.5" Width="488" Height="258" VerticalAlignment="Top" Grid.RowSpan="2" Grid.ColumnSpan="2" />
+        <Button x:Name="btnExit" Content="Exit" HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="75" Margin="0,0,10,10.5" Click="btnExit_Click" Grid.Row="1" Height="20" Grid.Column="1"/>
+        <Label x:Name="lblVersion" Content="v1.0.0" Margin="10,0,90,7.5" VerticalAlignment="Bottom" Grid.Row="1" Height="26" Grid.ColumnSpan="2"/>
+        <Label Content="Process ID:" Margin="10,0,5,0" Grid.Row="1" VerticalAlignment="Top"/>
+        <Label x:Name="lblPID" Content="0" Grid.Column="1" Grid.Row="1" VerticalAlignment="Top" Margin="0,0,10,0"/>
     </Grid>
 </Window>

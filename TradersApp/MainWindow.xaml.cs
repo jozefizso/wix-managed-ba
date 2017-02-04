@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Reflection;
 using System.Text;
@@ -33,6 +34,8 @@ namespace TradersApp
             var assembly = Assembly.GetExecutingAssembly();
             var name = assembly.GetName();
             lblVersion.Content = "v" + name.Version.ToString(3);
+
+            lblPID.Content = Process.GetCurrentProcess().Id;
         }
 
         private void btnExit_Click(object sender, RoutedEventArgs e)
