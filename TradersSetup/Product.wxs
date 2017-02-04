@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi"
+     xmlns:util="http://schemas.microsoft.com/wix/UtilExtension">
   <Product Id="*"
            UpgradeCode="e857b46d-3034-4a81-b581-9d035396346d"
            Name="Traders App"
@@ -53,6 +54,7 @@
                      WorkingDirectory="APPDIR"
                      />
          </File>
+         <util:RestartResource Path="[#TradersAppExe]" />
        </Component>
        <Component Id="TradersAppConfigComponent">
          <File Source="$(var.TradersApp.TargetDir)\TradersApp.exe.config" KeyPath="yes" />

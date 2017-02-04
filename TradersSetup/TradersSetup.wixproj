@@ -34,6 +34,12 @@
       <RefTargetDir>INSTALLFOLDER</RefTargetDir>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <WixExtension Include="WixUtilExtension">
+      <HintPath>$(WixExtDir)\WixUtilExtension.dll</HintPath>
+      <Name>WixUtilExtension</Name>
+    </WixExtension>
+  </ItemGroup>
   <Import Project="$(WixTargetsPath)" />
   <Target Name="SignCabs">
     <Exec Command="&quot;$(WindowsSDK80Path)bin\x86\signtool.exe&quot; sign /sha1 $(SignCertificateThumbprint) /fd sha256 /td sha256 /tr http://timestamp.comodoca.com/rfc3161 &quot;%(SignCabs.FullPath)&quot;" />
