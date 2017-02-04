@@ -98,7 +98,8 @@
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
   </Target>
-  <Target Name="AfterBuild">
-  </Target>
   -->
+  <Target Name="AfterBuild" Condition=" '$(SignCertificateThumbprint)' != '' ">
+    <Exec Command="&quot;$(WindowsSDK80Path)bin\x86\signtool.exe&quot; sign /sha1 $(SignCertificateThumbprint) /fd sha256 /td sha256 /tr http://timestamp.comodoca.com/rfc3161 &quot;$(TargetPath)&quot;" />
+  </Target>
 </Project>

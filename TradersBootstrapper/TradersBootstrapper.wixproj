@@ -10,6 +10,7 @@
     <OutputType>Bundle</OutputType>
     <WixTargetsPath Condition=" '$(WixTargetsPath)' == '' AND '$(MSBuildExtensionsPath32)' != '' ">$(MSBuildExtensionsPath32)\Microsoft\WiX\v3.x\Wix.targets</WixTargetsPath>
     <WixTargetsPath Condition=" '$(WixTargetsPath)' == '' ">$(MSBuildExtensionsPath)\Microsoft\WiX\v3.x\Wix.targets</WixTargetsPath>
+    <SignOutput Condition=" '$(SignCertificateThumbprint)' != '' ">true</SignOutput>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
     <OutputPath>bin\$(Configuration)\</OutputPath>
@@ -55,6 +56,12 @@
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(WixTargetsPath)" />
+  <Target Name="SignBundleEngine">
+    <Exec Command="&quot;$(WindowsSDK80Path)bin\x86\signtool.exe&quot; sign /sha1 $(SignCertificateThumbprint) /fd sha256 /td sha256 /tr http://timestamp.comodoca.com/rfc3161 &quot;@(SignBundleEngine)&quot;" />
+  </Target>
+  <Target Name="SignBundle">
+    <Exec Command="&quot;$(WindowsSDK80Path)bin\x86\signtool.exe&quot; sign /sha1 $(SignCertificateThumbprint) /fd sha256 /td sha256 /tr http://timestamp.comodoca.com/rfc3161 &quot;@(SignBundle)&quot;" />
+  </Target>
   <!--
 	To modify your build process, add your task inside one of the targets below and uncomment it.
 	Other similar extension points exist, see Wix.targets.
