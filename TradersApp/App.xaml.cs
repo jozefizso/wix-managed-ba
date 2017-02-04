@@ -13,5 +13,9 @@ namespace TradersApp
     /// </summary>
     public partial class App : Application
     {
+        public App()
+        {
+            this.InitializeComponent();
+        }
     }
 }
