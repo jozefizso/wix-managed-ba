@@ -9,7 +9,11 @@ namespace TradersBootstrapper.Installer
     {
         protected override void Run()
         {
-            
+            this.Engine.Log(LogLevel.Standard, $"Running the managed bootstrapper from class {nameof(TradersBootstrapperApp)}.");
+
+            this.Engine.Detect();
+
+            this.Engine.Quit(0);
         }
     }
 }
