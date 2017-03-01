@@ -46,6 +46,14 @@
       <RefProjectOutputGroups>Binaries;Content;Satellites</RefProjectOutputGroups>
       <RefTargetDir>INSTALLFOLDER</RefTargetDir>
     </ProjectReference>
+    <ProjectReference Include="..\TradersBootstrapperApp\TradersBootstrapperApp.csproj">
+      <Name>TradersBootstrapperApp</Name>
+      <Project>{e8b6ace6-dd31-4a79-85df-81eb8e7a83ba}</Project>
+      <Private>True</Private>
+      <DoNotHarvest>True</DoNotHarvest>
+      <RefProjectOutputGroups>Binaries;Content;Satellites</RefProjectOutputGroups>
+      <RefTargetDir>INSTALLFOLDER</RefTargetDir>
+    </ProjectReference>
     <ProjectReference Include="..\TradersSetup\TradersSetup.wixproj">
       <Name>TradersSetup</Name>
       <Project>{e84b19ab-c90e-4b8d-a2cf-c3d46336e61d}</Project>

@@ -9,20 +9,22 @@
           UpgradeCode="686e1a4a-9c6d-43c7-bf3e-56d056a246b7"
           IconSourceFile="$(var.TradersApp.ProjectDir)\nwicon.ico"
           >
-    <BootstrapperApplicationRef Id="WixStandardBootstrapperApplication.HyperlinkLargeLicense">
-      <bal:WixStandardBootstrapperApplication
-        LicenseUrl=""
-        ThemeFile="HyperlinkTheme.xml"
-        LocalizationFile="HyperlinkTheme.wxl"
-        LogoFile="nwicon.png"
-        SuppressOptionsUI="yes"
-        LaunchTarget="[ProgramFilesFolder]\Northwind Traders\Traders App\$(var.TradersApp.TargetFileName)"
-        ShowFilesInUse="yes"
-        />
+    <BootstrapperApplicationRef Id="ManagedBootstrapperApplicationHost">
+      <PayloadGroupRef Id="ManagedBootstrapperPayload" />
     </BootstrapperApplicationRef>
+
+    <WixVariable Id='WixMbaPrereqPackageId' Value='ignored' />
+    <WixVariable Id='WixMbaPrereqLicenseUrl' Value='ignored' />
 
     <Chain>
       <MsiPackage Id="TradersAppSetup" SourceFile="$(var.TradersSetup.TargetDir)\TradersAppSetup.msi" />
     </Chain>
   </Bundle>
+
+  <Fragment>
+    <PayloadGroup Id="ManagedBootstrapperPayload">
+      <Payload SourceFile="$(var.TradersBootstrapperApp.TargetPath)" />
+      <Payload SourceFile="$(var.TradersBootstrapperApp.TargetDir)BootstrapperCore.config" />
+    </PayloadGroup>
+  </Fragment>
 </Wix>
