@@ -12,18 +12,17 @@ namespace TradersBootstrapper.Installer
 
         protected override void Run()
         {
-            //this.Engine.Log(LogLevel.Standard, $"Running the managed bootstrapper from class {nameof(TradersBootstrapperApp)}.");
+            this.Engine.Log(LogLevel.Standard, $"Running the managed bootstrapper from class {nameof(TradersBootstrapperApp)}.");
             BootstrapperDispatcher = Dispatcher.CurrentDispatcher;
 
             MainViewModel viewModel = new MainViewModel(this);
-            viewModel.Engine.Detect();
 
             //this.ExecuteFilesInUse += TradersBootstrapperApp_ExecuteFilesInUse;
             //this.DetectComplete += OnDetectComplete;
             //this.PlanComplete += OnPlanComplete;
             //this.ApplyComplete += OnApplyComplete;
 
-            //this.Engine.Detect();
+            this.Engine.Detect();
 
             MainView view = new MainView();
             view.DataContext = viewModel;
