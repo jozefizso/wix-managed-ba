@@ -74,6 +74,18 @@ namespace TradersBootstrapper.Installer
             }
         }
 
+        private string cmdParameters;
+
+        public string CommandLineParameters
+        {
+            get { return cmdParameters; }
+            set
+            {
+                cmdParameters = value;
+                OnPropertyChanged("CommandLineParameters");
+            }
+        }
+
         private void InstallExecute()
         {
             IsThinking = true;
@@ -129,6 +141,7 @@ namespace TradersBootstrapper.Installer
         {
             var bundleManifestData = this.ApplicationData;
             this.DisplayName = bundleManifestData.Element(ManifestNamespace + "WixBundleProperties").Attribute("DisplayName").Value + " Setup";
+            this.CommandLineParameters = "/" + this.BootstrapperApp.Command.Action.ToString().ToLowerInvariant();
         }
 
         public static readonly XNamespace ManifestNamespace = (XNamespace)"http://schemas.microsoft.com/wix/2010/BootstrapperApplicationData";

@@ -5,19 +5,24 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
         xmlns:local="clr-namespace:TradersBootstrapper.Installer"
         mc:Ignorable="d" 
-        Width="300"
-        Height="300"
         Title="{Binding DisplayName}"
-        d:DesignHeight="300" d:DesignWidth="300">
+        WindowStartupLocation="CenterScreen"
+        Width="340"
+        Height="260"
+        d:DesignWidth="340"
+        d:DesignHeight="260">
     <Window.Resources>
         <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
     </Window.Resources>
     <Grid>
-        <TextBlock Text="{Binding DisplayName}" Margin="10" FontSize="18" HorizontalAlignment="Center" VerticalAlignment="Top" />
+        <StackPanel Orientation="Vertical" VerticalAlignment="Top" HorizontalAlignment="Stretch">
+            <TextBlock Text="{Binding DisplayName}" Margin="10" FontSize="18" HorizontalAlignment="Center" />
+            <TextBlock Text="{Binding CommandLineParameters}" Margin="10" FontSize="12" HorizontalAlignment="Center" />
+        </StackPanel>
         <ProgressBar Height="8" Width="200" HorizontalAlignment="Center"></ProgressBar>
-        <StackPanel Orientation="Horizontal" VerticalAlignment="Bottom" HorizontalAlignment="Right">
-            <Button Content="Install" Command="{Binding Path=InstallCommand}" Visibility="{Binding Path=InstallEnabled, Converter={StaticResource BooleanToVisibilityConverter}}" Margin="10" Height="20" Width="80"/>
-            <Button Content="Uninstall" Command="{Binding Path=UninstallCommand}" Visibility="{Binding Path=UninstallEnabled, Converter={StaticResource BooleanToVisibilityConverter}}" Margin="10" Height="20" Width="80"/>
+        <StackPanel Orientation="Horizontal" VerticalAlignment="Bottom" HorizontalAlignment="Center">
+            <Button Content="Install" Command="{Binding Path=InstallCommand}" IsEnabled="{Binding Path=InstallEnabled, Converter={StaticResource BooleanToVisibilityConverter}}" Margin="10" Height="20" Width="80"/>
+            <Button Content="Uninstall" Command="{Binding Path=UninstallCommand}" IsEnabled="{Binding Path=UninstallEnabled, Converter={StaticResource BooleanToVisibilityConverter}}" Margin="10" Height="20" Width="80"/>
             <Button Content="Exit" Command="{Binding Path=ExitCommand}" Margin="10" Height="20" Width="80" />
         </StackPanel>
     </Grid>
