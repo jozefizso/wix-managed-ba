@@ -21,7 +21,7 @@
     </BootstrapperApplicationRef>
 
     <Chain>
-      <MsiPackage Id="TradersAppSetup" SourceFile="$(var.TradersSetup.TargetDir)\TradersAppSetup.msi" />
+      <MsiPackage Id="TradersAppSetup" SourceFile="$(var.TradersSetup.TargetDir)\$(var.TradersSetup.TargetFileName)" />
     </Chain>
   </Bundle>
 </Wix>
